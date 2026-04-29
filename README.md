@@ -21,12 +21,14 @@ Salin file .env.example menjadi .env dan pastikan konfigurasi database sesuai de
 Perintah: cp .env.example .env
 
 Sesuaikan bagian database di file .env sebagai berikut:
+```bash
 DB_CONNECTION=mysql
 DB_HOST=db
 DB_PORT=3306
 DB_DATABASE=sikapi
 DB_USERNAME=sikapi_user
 DB_PASSWORD=password
+```
 
 2. Jalankan Kontainer
 Gunakan Docker Compose untuk membangun dan menjalankan layanan:
