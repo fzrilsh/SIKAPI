@@ -17,8 +17,9 @@ Ikuti langkah-langkah di bawah ini untuk menjalankan development environment men
 
 1. Persiapan File Environment
 Salin file .env.example menjadi .env dan pastikan konfigurasi database sesuai dengan docker-compose.yml.
-
-Perintah: cp .env.example .env
+```bash
+cp .env.example .env
+```
 
 Sesuaikan bagian database di file .env sebagai berikut:
 ```bash
@@ -32,16 +33,21 @@ DB_PASSWORD=password
 
 2. Jalankan Kontainer
 Gunakan Docker Compose untuk membangun dan menjalankan layanan:
+```bash
 docker-compose up -d
+```
 
 3. Migrasi Database
 Setelah kontainer berjalan, jalankan migrasi untuk menyiapkan tabel:
+```bash
 docker-compose exec app php artisan migrate
+```
 
 4. Menjalankan Frontend (Tailwind v4)
 Untuk melihat perubahan desain secara real-time, jalankan Vite:
+```bash
 docker-compose exec app npm run dev
-
+```
 ---
 
 ## Akses Panel Pemerintah (Filament)
