@@ -1,0 +1,144 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/container-queries";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --color-primary: #2563EB;
+    --color-on-primary: #FFFFFF;
+    --color-primary-container: #2563EB;
+    --color-on-primary-container: #FFFFFF;
+    --color-primary-fixed: #DBEAFE;
+    --color-on-primary-fixed: #1E3A8A;
+    --color-primary-fixed-dim: #93C5FD;
+    --color-on-primary-fixed-variant: #EFF6FF;
+
+    --color-secondary: #0D9488;
+    --color-on-secondary: #FFFFFF;
+    --color-secondary-container: #0D9488;
+    --color-on-secondary-container: #FFFFFF;
+    --color-secondary-fixed: #CCFBF1;
+    --color-on-secondary-fixed: #134E4A;
+    --color-secondary-fixed-dim: #5EEAD4;
+    --color-on-secondary-fixed-variant: #F0FDFA;
+
+    --color-tertiary: #475569;
+    --color-on-tertiary: #FFFFFF;
+    --color-tertiary-container: #F1F5F9;
+    --color-on-tertiary-container: #1E293B;
+    --color-tertiary-fixed: #CBD5E1;
+    --color-on-tertiary-fixed: #0F172A;
+    --color-tertiary-fixed-dim: #94A3B8;
+    --color-on-tertiary-fixed-variant: #F8FAFC;
+
+    --color-error: #E11D48;
+    --color-on-error: #FFFFFF;
+    --color-error-container: #FFE4E6;
+    --color-on-error-container: #9F1239;
+
+    --color-background: #F8FAFC;
+    --color-on-background: #0F172A;
+    --color-surface: #FFFFFF;
+    --color-on-surface: #0F172A;
+    --color-surface-variant: #F1F5F9;
+    --color-on-surface-variant: #475569;
+    --color-surface-bright: #FFFFFF;
+    --color-surface-dim: #E2E8F0;
+    --color-surface-container-lowest: #FFFFFF;
+    --color-surface-container-low: #F8FAFC;
+    --color-surface-container: #F1F5F9;
+    --color-surface-container-high: #E2E8F0;
+    --color-surface-container-highest: #CBD5E1;
+    --color-inverse-surface: #0F172A;
+    --color-inverse-on-surface: #F8FAFC;
+    --color-inverse-primary: #BFDBFE;
+
+    --color-outline: #94A3B8;
+    --color-outline-variant: #E2E8F0;
+    --color-surface-tint: #2563EB;
+
+    --color-sidebar: #1E293B;
+    --color-on-sidebar: #CBD5E1;
+    --color-on-sidebar-active: #FFFFFF;
+    --color-sidebar-active-bg: #334155;
+
+    --radius: 0.25rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-full: 9999px;
+
+    --spacing-margin-page: 40px;
+    --spacing-stack-md: 24px;
+    --spacing-gutter: 24px;
+    --spacing-container-max: 1280px;
+    --spacing-stack-lg: 48px;
+    --spacing-base: 8px;
+    --spacing-stack-sm: 12px;
+    --spacing-sidebar-width: 280px;
+
+    --font-label-sm: "Public Sans", sans-serif;
+    --font-label-bold: "Public Sans", sans-serif;
+    --font-h1: "Public Sans", sans-serif;
+    --font-h2: "Public Sans", sans-serif;
+    --font-h3: "Public Sans", sans-serif;
+    --font-body-md: "Public Sans", sans-serif;
+    --font-body-lg: "Public Sans", sans-serif;
+
+    --text-label-sm: 12px;
+    --text-label-sm--line-height: 1.2;
+    --text-label-sm--font-weight: 500;
+
+    --text-label-bold: 14px;
+    --text-label-bold--line-height: 1.2;
+    --text-label-bold--font-weight: 600;
+
+    --text-h1: 40px;
+    --text-h1--line-height: 1.2;
+    --text-h1--letter-spacing: -0.02em;
+    --text-h1--font-weight: 700;
+
+    --text-h2: 32px;
+    --text-h2--line-height: 1.3;
+    --text-h2--letter-spacing: -0.01em;
+    --text-h2--font-weight: 600;
+
+    --text-h3: 24px;
+    --text-h3--line-height: 1.4;
+    --text-h3--font-weight: 600;
+
+    --text-body-md: 16px;
+    --text-body-md--line-height: 1.6;
+    --text-body-md--font-weight: 400;
+
+    --text-body-lg: 18px;
+    --text-body-lg--line-height: 1.6;
+    --text-body-lg--font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  src: url('../fonts/material-symbols.woff2') format('woff2');
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Default */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
