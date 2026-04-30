@@ -22,7 +22,7 @@
                     <div class="flex items-center gap-3 w-full bg-white/10 p-2 rounded-xl border border-white/20">
                         <img alt="User profile"
                             class="w-10 h-10 rounded-full object-cover border border-white/40 hidden sm:block shadow-sm"
-                            src="{{ auth()->check() && auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : 'https://lh3.googleusercontent.com/aida-public/AB6AXuBS_N8OmRXB7bXjg3tsO7jOS6Kezf6wTMS-rrs5TReo7cGFVTXRLsQ1lO_EOrG1H7HbnlJ_FRbLo2cHIyp1WQ1Aq4M5-Y0-51F8A2Tf2vbE4iDqu507LAEU8kPvnLUFDheSloX4bY4Okdyvuy6d9hZm0aoyDyl8Pu58i4M1lOcDyTbNcs3BP_f-sPPdUvaR-g05YeddvmTHnExh46TvBxLp5tWuz3K4Ce3P7BgbK1wjqotrliRrdfz13QosC8G1CETiIr6RRtTZCyQ' }}" />
+                            src="{{ auth()->check() && auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : 'https://ui-avatars.com/api/?name=' . auth()->user()->name }}" />
 
                         <form action="{{ route('policies.index') }}" method="GET"
                             class="flex flex-1 h-12 shadow-sm bg-white rounded-lg transition-all focus-within:ring-4 focus-within:ring-white/30">
