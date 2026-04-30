@@ -35,5 +35,3 @@ WORKDIR /var/www
 COPY . /var/www
 
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
-
-EXPOSE 8000 5173
