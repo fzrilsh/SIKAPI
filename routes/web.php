@@ -16,6 +16,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/auth/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::controller(PolicyController::class)->group(function () {
+        Route::get('/bookmark', 'bookmarks')->name('policies.bookmarks');
         Route::get('/kebijakan', 'index')->name('policies.index');
         Route::get('/kebijakan/{policy:slug}', 'show')->name('policies.show');
         Route::post('/kebijakan/{policy}/interact', 'interact')->name('policies.interact');
