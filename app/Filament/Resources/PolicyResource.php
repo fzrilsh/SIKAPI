@@ -77,7 +77,7 @@ class PolicyResource extends Resource
                     ->schema([
                         Select::make('status')
                             ->options([
-                                'draft' => 'Draft',
+                                'draft' => 'Pengumpulan Draft',
                                 'public_evaluation' => 'Evaluasi Publik',
                                 'under_review' => 'Dalam Tinjauan',
                                 'approved' => 'Disetujui',
@@ -141,7 +141,7 @@ class PolicyResource extends Resource
                         'needs_revision' => 'danger',
                     })
                     ->formatStateUsing(fn(string $state): string => match ($state) {
-                        'draft' => 'Draft',
+                        'draft' => 'Pengumpulan Draft',
                         'public_evaluation' => 'Evaluasi Publik',
                         'under_review' => 'Dalam Tinjauan',
                         'approved' => 'Disetujui',
@@ -155,7 +155,7 @@ class PolicyResource extends Resource
             ->filters([
                 SelectFilter::make('status')
                     ->options([
-                        'draft' => 'Draft',
+                        'draft' => 'Pengumpulan Draft',
                         'public_evaluation' => 'Evaluasi Publik',
                         'under_review' => 'Dalam Tinjauan',
                         'approved' => 'Disetujui',
