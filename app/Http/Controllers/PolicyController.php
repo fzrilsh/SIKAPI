@@ -188,4 +188,39 @@ class PolicyController extends Controller
 
         return back();
     }
+
+    public function bookmarks(Request $request)
+    {
+        $bookmarkedPolicyIds = Interaction::where('user_id', Auth::id())
+            ->where('interactable_type', Policy::class)
+            ->where('type', 'bookmark')
+            ->pluck('interactable_id');
+
+        $query = Policy::with(['ministry', 'interactions'])
+            ->withCount(['upvotes', 'downvotes', 'comments'])
+            ->whereIn('id', $bookmarkedPolicyIds);
+
+        if ($request->filled('search')) {
+            $searchTerm = $request->search;
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('title', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('summary', 'like', '%' . $searchTerm . '%');
+            });
+        }
+
+        if ($request->filled('status') && $request->status !== 'semua') {
+            $query->where('status', $request->status);
+        }
+
+        $counts = [
+            'semua' => $bookmarkedPolicyIds->count(),
+            'public_evaluation' => Policy::whereIn('id', $bookmarkedPolicyIds)->where('status', 'public_evaluation')->count(),
+            'draft' => Policy::whereIn('id', $bookmarkedPolicyIds)->where('status', 'draft')->count(),
+            'approved' => Policy::whereIn('id', $bookmarkedPolicyIds)->where('status', 'approved')->count(),
+        ];
+
+        $policies = $query->latest()->paginate(10)->withQueryString();
+
+        return view('pages.bookmark', compact('policies', 'counts'));
+    }
 }
