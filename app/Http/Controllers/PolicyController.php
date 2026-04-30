@@ -7,6 +7,8 @@ use App\Models\Interaction;
 use App\Models\Ministry;
 use App\Models\Policy;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 
 class PolicyController extends Controller
@@ -222,5 +224,87 @@ class PolicyController extends Controller
         $policies = $query->latest()->paginate(10)->withQueryString();
 
         return view('pages.bookmark', compact('policies', 'counts'));
+    }
+
+    public function activities(Request $request)
+    {
+        $user = Auth::user();
+
+        $interactions = Interaction::with(['interactable.ministry'])
+            ->where('user_id', $user->id)
+            ->where('interactable_type', Policy::class)
+            ->whereIn('type', ['upvote', 'downvote'])
+            ->get()
+            ->map(function ($item) {
+                $policy = $item->interactable;
+                return (object) [
+                    'id' => 'int_' . $item->id,
+                    'type' => $item->type === 'upvote' ? 'like' : 'dislike',
+                    'icon' => $item->type === 'upvote' ? 'thumb_up' : 'thumb_down',
+                    'label' => $item->type === 'upvote' ? 'Anda mendukung kebijakan' : 'Anda menolak kebijakan',
+                    'title' => $policy->title ?? 'Kebijakan Tidak Diketahui',
+                    'ministry' => $policy->ministry->name ?? 'Pemerintah Pusat',
+                    'ministryIcon' => $policy->ministry->image ?? null,
+                    'time' => $item->created_at->diffForHumans(),
+                    'timestamp' => $item->created_at,
+                    'outcome' => $policy->status ?? 'draft',
+                    'commentText' => null,
+                    'url' => $policy ? route('policies.show', $policy->slug) : '#',
+                ];
+            });
+
+        $comments = Comment::with(['policy.ministry'])
+            ->where('user_id', $user->id)
+            ->get()
+            ->map(function ($item) {
+                $policy = $item->policy;
+                return (object) [
+                    'id' => 'com_' . $item->id,
+                    'type' => 'comment',
+                    'icon' => 'chat_bubble',
+                    'label' => 'Anda mengomentari kebijakan',
+                    'title' => $policy->title ?? 'Kebijakan Tidak Diketahui',
+                    'ministry' => $policy->ministry->name ?? 'Pemerintah Pusat',
+                    'ministryIcon' => $policy->ministry->logo ?? null,
+                    'time' => $item->created_at->diffForHumans(),
+                    'timestamp' => $item->created_at,
+                    'outcome' => $policy->status ?? 'draft',
+                    'commentText' => $item->content,
+                    'url' => $policy ? route('policies.show', $policy->slug) . '#comments' : '#',
+                ];
+            });
+
+        $activities = $interactions->merge($comments)->sortByDesc('timestamp')->values();
+
+        $stats = [
+            'like' => $activities->where('type', 'like')->count(),
+            'dislike' => $activities->where('type', 'dislike')->count(),
+            'comment' => $activities->where('type', 'comment')->count(),
+            'disetujui' => $activities->where('outcome', 'approved')->count(),
+            'revisi' => $activities->where('outcome', 'needs_revision')->count(),
+        ];
+
+        $activeTab = $request->query('tab', 'semua');
+        if ($activeTab !== 'semua') {
+            if (in_array($activeTab, ['like', 'dislike', 'comment'])) {
+                $activities = $activities->where('type', $activeTab);
+            } elseif ($activeTab === 'disetujui') {
+                $activities = $activities->where('outcome', 'approved');
+            } elseif ($activeTab === 'revisi') {
+                $activities = $activities->where('outcome', 'needs_revision');
+            }
+        }
+
+        $currentPage = Paginator::resolveCurrentPage();
+        $perPage = 10;
+        $paginatedActivities = new LengthAwarePaginator(
+            $activities->forPage($currentPage, $perPage),
+            $activities->count(),
+            $perPage,
+            $currentPage,
+            ['path' => Paginator::resolveCurrentPath()]
+        );
+
+        return view('pages.aktivitas', compact('paginatedActivities', 'stats', 'activeTab'));
     }
 }
