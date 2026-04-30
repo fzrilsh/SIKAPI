@@ -38,11 +38,11 @@
     <div class="mt-auto relative" x-data="{ open: false }">
         <button @click="open = !open"
             class="flex items-center gap-3 p-3 rounded-full hover:bg-surface-container w-full transition-colors">
-            <img src="{{ auth()->user()->avatar ?? 'https://ui-avatars.com/api/?name=Fazril+Syaveral' }}"
+            <img src="{{ auth()->user()->avatar ?? 'https://ui-avatars.com/api/?name=' . auth()->user()->name }}"
                 class="w-10 h-10 rounded-full border border-outline-variant">
             <div class="flex flex-col overflow-hidden text-left flex-1">
-                <span class="font-bold text-sm truncate">Fazril Syaveral</span>
-                <span class="text-xs text-slate-500 truncate">@fazril_sh</span>
+                <span class="font-bold text-sm truncate">{{ auth()->user()->name }}</span>
+                <span class="text-xs text-slate-500 truncate">{{ auth()->user()->email }}</span>
             </div>
             <span class="material-symbols-outlined text-slate-400">more_horiz</span>
         </button>
@@ -53,7 +53,7 @@
                 <span class="material-symbols-outlined text-blue-600">workspace_premium</span> Ajukan Jadi Pakar
             </a>
             <hr class="my-1 border-slate-100">
-            <form method="POST" action="/logout">
+            <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button
                     class="w-full flex items-center gap-3 px-4 py-3 hover:bg-red-50 text-red-600 text-sm font-semibold">
