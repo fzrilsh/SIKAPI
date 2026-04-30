@@ -25,7 +25,7 @@
             </x-slot:append>
         </x-navigations.nav-link>
         <x-navigations.nav-link href="{{ route('policies.bookmarks') }}" icon="bookmarks" active="{{ request()->is('bookmark*') }}">Bookmarks</x-navigations.nav-link>
-        <x-navigations.nav-link href="/aktivitas" icon="analytics">Aktivitas Saya</x-navigations.nav-link>
+        <x-navigations.nav-link href="{{ route('user.activities') }}" icon="analytics" active="{{ request()->is('aktivitas*') }}">Aktivitas Saya</x-navigations.nav-link>
         <x-navigations.nav-link href="/pengaturan" icon="settings">Pengaturan</x-navigations.nav-link>
         <x-navigations.nav-link href="/bantuan" icon="help">Bantuan</x-navigations.nav-link>
     </nav>
@@ -33,7 +33,7 @@
     <div class="mt-auto relative" x-data="{ open: false }">
         <button @click="open = !open"
             class="flex items-center gap-3 p-3 rounded-full hover:bg-surface-container w-full transition-colors">
-            <img src="{{ auth()->user()->avatar ?? 'https://ui-avatars.com/api/?name=' . auth()->user()->name }}"
+            <img src="{{ auth()->check() && auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : 'https://ui-avatars.com/api/?name=' . auth()->user()->name }}"
                 class="w-10 h-10 rounded-full border border-outline-variant">
             <div class="flex flex-col overflow-hidden text-left flex-1">
                 <span class="font-bold text-sm truncate">{{ auth()->user()->name }}</span>
