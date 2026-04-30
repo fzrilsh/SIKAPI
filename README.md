@@ -40,7 +40,7 @@ docker-compose up -d
 3. Migrasi Database
 Setelah kontainer berjalan, jalankan migrasi untuk menyiapkan tabel:
 ```bash
-docker-compose exec app php artisan migrate
+docker-compose exec app php artisan migrate:fresh --seed
 ```
 
 4. Menjalankan Frontend (Tailwind v4)
@@ -59,4 +59,6 @@ Panel ini digunakan oleh kementerian untuk membuat thread kebijakan publik dan m
 - Password: admin123
 
 Note: Jika user di atas belum ada di database lokalmu, buat secara manual dengan perintah:
-docker-compose exec app php artisan make:filament-user
+```bash
+docker-compose exec app php artisan db:seed
+```
