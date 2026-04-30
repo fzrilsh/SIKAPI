@@ -138,8 +138,6 @@
                                 @if ($item->ministryIcon)
                                     <img src="{{ asset('storage/' . $item->ministryIcon) }}"
                                         class="w-3.5 h-3.5 rounded-full object-cover">
-                                @else
-                                    <span class="material-symbols-outlined text-[13px]!">account_balance</span>
                                 @endif
                                 <span>{{ $item->ministry }}</span>
                             </span>
