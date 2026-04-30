@@ -27,6 +27,7 @@ class PolicySeeder extends Seeder
                 'title' => 'RUU Sistem Kesehatan Nasional 2024',
                 'summary' => 'Pembaruan komprehensif terhadap infrastruktur kesehatan publik, berfokus pada digitalisasi rekam medis dan pemerataan fasilitas layanan tingkat pertama di daerah tertinggal.',
                 'status' => 'public_evaluation',
+                'document_url' => 'https://drive.google.com/file/d/1FQGnkjDuzhLB194tD-0jTOGLXdUax-5g/view?usp=drive_link',
                 'deadline_date' => Carbon::now()->addDays(14),
                 'points' => [
                     ['icon' => 'medical_services', 'title' => 'Fasilitas Merata', 'description' => 'Pemerataan faskes tingkat pertama di seluruh pelosok desa.'],
@@ -38,6 +39,7 @@ class PolicySeeder extends Seeder
                 'title' => 'RUU Perlindungan Data Pribadi (RUU PDP)',
                 'summary' => 'Menjamin hak dasar warga negara terkait pelindungan diri dan data pribadi mereka di era digital, termasuk kewajiban korporasi melaporkan kebocoran data.',
                 'status' => 'public_evaluation',
+                'document_url' => 'https://drive.google.com/file/d/1FQGnkjDuzhLB194tD-0jTOGLXdUax-5g/view?usp=drive_link',
                 'deadline_date' => Carbon::now()->addDays(21),
                 'points' => [
                     ['icon' => 'shield_person', 'title' => 'Hak Subjek Data', 'description' => 'Masyarakat berhak mengakses, memperbaiki, dan menghapus data pribadi mereka.'],
@@ -49,6 +51,7 @@ class PolicySeeder extends Seeder
                 'title' => 'Revisi Kurikulum Merdeka Terpadu',
                 'summary' => 'Penyesuaian indikator pencapaian siswa berbasis proyek, integrasi kemampuan literasi digital sejak sekolah dasar, dan fleksibilitas jam mengajar bagi tenaga pendidik.',
                 'status' => 'draft',
+                'document_url' => 'https://drive.google.com/file/d/1FQGnkjDuzhLB194tD-0jTOGLXdUax-5g/view?usp=drive_link',
                 'deadline_date' => Carbon::now()->addDays(5),
                 'points' => [
                     ['icon' => 'school', 'title' => 'Literasi Digital', 'description' => 'Mata pelajaran literasi digital diwajibkan sejak jenjang SD.'],
@@ -59,6 +62,7 @@ class PolicySeeder extends Seeder
                 'title' => 'RUU Perampasan Aset Koruptor',
                 'summary' => 'Regulasi baru untuk mempercepat proses perampasan aset hasil tindak pidana korupsi, termasuk aset yang diparkir di luar negeri melalui kerja sama internasional.',
                 'status' => 'approved',
+                'document_url' => 'https://drive.google.com/file/d/1FQGnkjDuzhLB194tD-0jTOGLXdUax-5g/view?usp=drive_link',
                 'deadline_date' => Carbon::now()->subDays(1),
                 'points' => [
                     ['icon' => 'account_balance', 'title' => 'Aset Luar Negeri', 'description' => 'Mekanisme pelacakan dan penyitaan aset koruptor yang disembunyikan di luar negeri.']
@@ -74,6 +78,7 @@ class PolicySeeder extends Seeder
                     'title' => $data['title'],
                     'summary' => $data['summary'],
                     'status' => $data['status'],
+                    'document_url' => $data['document_url'],
                     'deadline_date' => $data['deadline_date'],
                 ]
             );
