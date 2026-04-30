@@ -24,7 +24,7 @@
                     class="absolute top-3 left-8 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-background"></span>
             </x-slot:append>
         </x-navigations.nav-link>
-        <x-navigations.nav-link href="/bookmark" icon="bookmarks">Bookmarks</x-navigations.nav-link>
+        <x-navigations.nav-link href="{{ route('policies.bookmarks') }}" icon="bookmarks" active="{{ request()->is('bookmark*') }}">Bookmarks</x-navigations.nav-link>
         <x-navigations.nav-link href="/aktivitas" icon="analytics">Aktivitas Saya</x-navigations.nav-link>
         <x-navigations.nav-link href="/pengaturan" icon="settings">Pengaturan</x-navigations.nav-link>
         <x-navigations.nav-link href="/bantuan" icon="help">Bantuan</x-navigations.nav-link>
