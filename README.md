@@ -48,15 +48,41 @@ Untuk melihat perubahan desain secara real-time, jalankan Vite:
 ```bash
 docker-compose exec app npm run dev
 ```
+
 ---
 
-## Akses Panel Pemerintah (Filament)
+## Akun Pengujian
 
-Panel ini digunakan oleh kementerian untuk membuat thread kebijakan publik dan mengelola konten.
+Aplikasi SIKAPI memiliki beberapa level akses. Jika Anda sudah menjalankan perintah `migrate:fresh --seed`, akun-akun di bawah ini sudah tersedia secara otomatis untuk pengujian:
 
-- URL: http://localhost:8000/admin
-- Email: admin@sikapi.go.id
-- Password: admin123
+### 1. Super Admin (Akses Penuh Panel Filament)
+Digunakan untuk mengelola seluruh data platform.
+- **URL Login:** http://localhost:8000/admin
+- **Email:** admin@sikapi.go.id
+- **Password:** password
+
+### 2. Admin Kementerian / Instansi
+Digunakan oleh perwakilan kementerian untuk merilis dan memantau kebijakan instansi mereka.
+- **Email:** admin.kemenkes@sikapi.go.id
+- **Password:** password
+
+### 3. Pakar Hukum Terverifikasi
+Akun publik dengan badge "Pakar" yang diizinkan untuk berdiskusi di Ruang Pakar.
+- **Nama:** Dr. Budi Santoso, S.H., M.H.
+- **Email:** budi.santoso@gmail.id
+- **Password:** password
+
+### 4. Warga / Masyarakat Umum
+Akun publik standar untuk memberikan dukungan (vote) dan berdiskusi di Ruang Publik.
+- **Nama:** Siti Aminah
+- **Email:** siti.aminah@gmail.id
+- **Password:** password
+
+- **Nama:** Fazril Syaveral Hillaby
+- **Email:** fazril@sikapi.go.id
+- **Password:** password
+
+---
 
 Note: Jika user di atas belum ada di database lokalmu, buat secara manual dengan perintah:
 ```bash
