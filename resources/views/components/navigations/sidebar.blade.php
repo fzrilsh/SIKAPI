@@ -15,24 +15,19 @@
     </div>
 
     <nav class="flex flex-col gap-1 mt-2">
-        <x-navigations.nav-link href="/" icon="home" active="{{ request()->is('/') }}">Beranda</x-navigations.nav-link>
-        <x-navigations.nav-link href="/kebijakan" icon="policy" active="{{ request()->is('kebijakan*') }}">Kebijakan</x-navigations.nav-link>
+        <x-navigations.nav-link href="{{ route('home') }}" icon="home" active="{{ request()->is('/') }}">Beranda</x-navigations.nav-link>
+        <x-navigations.nav-link href="{{ route('policies.index') }}" icon="policy" active="{{ request()->is('kebijakan*') }}">Kebijakan</x-navigations.nav-link>
         <x-navigations.nav-link href="/notifikasi" icon="notifications">
             Notifikasi
-
             <x-slot:append>
                 <span
                     class="absolute top-3 left-8 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-background"></span>
             </x-slot:append>
         </x-navigations.nav-link>
+        <x-navigations.nav-link href="/bookmark" icon="bookmarks">Bookmarks</x-navigations.nav-link>
         <x-navigations.nav-link href="/aktivitas" icon="analytics">Aktivitas Saya</x-navigations.nav-link>
         <x-navigations.nav-link href="/pengaturan" icon="settings">Pengaturan</x-navigations.nav-link>
         <x-navigations.nav-link href="/bantuan" icon="help">Bantuan</x-navigations.nav-link>
-
-        <button
-            class="mt-4 bg-blue-600 text-white font-bold text-lg py-3 rounded-full hover:bg-blue-700 transition-all w-[90%]">
-            Mulai Diskusi
-        </button>
     </nav>
 
     <div class="mt-auto relative" x-data="{ open: false }">
