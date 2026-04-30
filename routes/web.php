@@ -22,3 +22,11 @@ Route::get('/register', function () {
 Route::get('/login', function () {
     return view('pages.auth');
 })->name('login');
+
+Route::get('/bookmark', function () {
+    return view('pages.bookmark');
+})->name('bookmark');
+
+Route::get('/aktivitas', function () {
+    return view('pages.aktivitas');
+})->name('aktivitas');
