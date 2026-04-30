@@ -1,4 +1,4 @@
-# SIKAPI - Sinkronisasi Kebijakan dan Aspirasi Publik
+# SIKAPI - Sinkronisasi Kebijakan Pemerintah dengan Aspirasi Publik
 
 SIKAPI adalah platform berbasis web yang memungkinkan kementerian/pemerintah untuk mempublikasikan rancangan kebijakan (RUU/Peraturan) dan memfasilitasi diskusi dua arah antara pakar hukum dan masyarakat umum.
 
